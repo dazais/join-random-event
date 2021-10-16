@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">JoinRandomEvent</string>
+    <string name="facebook_app_id">188371761257339</string>
+    <string name="facebook_client_token">6e0ec671a5229e7d822efe738a2a48d9</string>
+    <string name="fb_login_protocol_scheme">fb188371761257339</string>
+    <string name="app_subtitle">Trouvez des events pres de chez vous</string>
+</resources>
