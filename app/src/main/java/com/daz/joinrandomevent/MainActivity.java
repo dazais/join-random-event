@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
         loginButton = findViewById(R.id.login_button);
         loginButton.setPermissions(Arrays.asList(EMAIL,LOCATION_SERVICE,USER_SERVICE));
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+
 
 
         // Callback registration
@@ -105,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getUserEvents(AccessToken accessToken) {
-        ArrayList data
+        ArrayList data = new ArrayList();
+
 
     // code applicatif
     // from FB Graph API tool

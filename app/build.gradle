@@ -25,6 +25,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    packagingOptions {
+        exclude 'META-INF/license.*'
+        exclude 'META-INF/spring.*'
+        exclude 'META-INF/notice.txt'
+
+    }
 }
 
 dependencies {
@@ -41,3 +48,4 @@ dependencies {
     implementation 'org.springframework.social:spring-social-facebook:latest.release'
 
 }
+
