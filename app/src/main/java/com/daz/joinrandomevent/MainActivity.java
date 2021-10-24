@@ -19,6 +19,8 @@ import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.impl.FacebookTemplate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     CallbackManager callbackManager;
-    LoginButton loginButton;
+    LoginButton loginButton, eventsDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getUserEvents(AccessToken accessToken) {
-        ArrayList data = new ArrayList();
+        ArrayList userEvents = new ArrayList();
 
 
     // code applicatif
@@ -117,12 +119,28 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onCompleted(JSONObject object, GraphResponse response) {
                     Log.d(TAG, response.toString());
-                    //data =
+
+                    if (object != null) {
+                        try {
+                            String name = object.getString("name");
+                            String fbUserID = object.getString("id");
+                            String userEvents = object.getString("events");
+
+                            // Display results
+                            eventsDisplay = findViewById(R.id.events);
+                            //eventsDisplay.
+
+
+                        } catch (JSONException | NullPointerException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             });
 
+    // Define request parameters
     Bundle parameters = new Bundle();
-    parameters.putString("fields", "id,name");
+    parameters.putString("fields", "id,name,events");
     request.setParameters(parameters);
 
 
@@ -158,6 +176,10 @@ public class MainActivity extends AppCompatActivity {
     Log.d(TAG, request.toString());
     request.executeAsync();
 
+    // test avec Spring Social
+//    Facebook facebook = new FacebookTemplate(accessToken.getToken());
+//    String email = facebook.userOperations().getUserProfile().getEmail();
+//    Log.d(TAG, "Retrieved user email using Spring Social: "+email);
 
 }
 
